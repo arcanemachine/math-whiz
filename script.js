@@ -3,9 +3,13 @@
 
 "use strict";
 
-function aMathWhizComponent() { // options = {}) {
+function aMathWhizComponent() {
   return {
-    // ...options,
-    helloString: "Hello world!",
+    gameLoopIsActive: false,
+    
+
+    gameStart() {
+      this.gameLoopIsActive = true;
+    },
   };
 }

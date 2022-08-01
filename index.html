@@ -14,13 +14,13 @@
 
     <!-- CSS -->
 
-    <!-- bootstrap
+    <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.x.x/dist/css/bootstrap.min.css"
           rel="stylesheet"
-          crossorigin="anonymous"> -->
+          crossorigin="anonymous">
 
-    <!-- custom
-    <link rel="stylesheet" href="styles.css"> -->
+    <!-- custom styles -->
+    <link rel="stylesheet" href="styles.css">
 
 
     <!-- JS -->
@@ -38,16 +38,63 @@
     </script>
 
     <!-- live.js -->
-    <script defer src="/live.js"></script>
+    <script defer
+      src="https://cdn.jsdelivr.net/gh/Q42/LiveJS@master/livejs.js"
+    ></script>
 
   </head>
-  <body>
+  <body x-data="aMathWhizComponent()">
 
-    <h1 id="text-center">Math Whiz</h1>
+    <section class="page-content d-flex flex-column flex-center">
 
-    <div x-data="aMathWhizComponent()"
-         x-text="helloString">
-    </div>
+      <div class="w-100 my-2 d-flex">
+        <!-- title -->
+        <h1 class="ms-2 flex-grow-1 cursor-default user-select-none">
+          Math Whiz
+        </h1>
+
+        <!-- menu icon -->
+        <div class="cursor-pointer"
+             title="Options menu">
+          <span class="p-2">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="32"
+                 height="32"
+                 fill="currentColor"
+                 class="bi bi-list"
+                 viewBox="0 0 16 16">
+              <path fill-rule="evenodd"
+                    d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0
+                       1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0
+                       0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5
+                       0 0 1-.5-.5z"/>
+            </svg>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- main menu -->
+      <div x-show="!gameLoopIsActive"
+           x-transition.opacity
+           class="flex-grow-1 d-flex flex-center">
+
+        <div class="d-flex flex-center">
+          <button class="btn btn-primary"
+                  @click="gameStart()">
+            Start New Game
+          </button>
+        </div>
+        
+      </div>
+
+      <!-- status bar -->
+      <div class="d-flex">
+        <div>Debug:&nbsp;</div>
+        <div x-text="gameLoopIsActive"></div>
+      </div>
+
+    </section>
 
 	</body>
 </html>

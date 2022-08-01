@@ -1,0 +1,27 @@
+/* components */
+.page-content {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* utility classes */
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.user-select-none {
+  user-select: none;
+}
+
+.w-100 {
+  width: 100%;
+}
