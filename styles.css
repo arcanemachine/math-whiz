@@ -1,4 +1,8 @@
 /* components */
+.menu-button {
+  width: 15rem;
+}
+
 .page-content {
   height: 100vh;
   width: 100vw;
@@ -25,3 +29,4 @@
 .w-100 {
   width: 100%;
 }
+

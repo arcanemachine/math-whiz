@@ -44,10 +44,54 @@
 
   </head>
   <body x-data="aMathWhizComponent()">
+    
+    <!-- modal - main menu -->
+    <div class="modal fade"
+         id="menu-modal"
+         tabindex="-1"
+         aria-labelledby="menu-modal-label"
+         aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Menu
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close">
+            </button>
+          </div>
+          <div class="modal-body text-center">
+            <!-- pre-game options -->
+            <div x-show="!gameLoopIsActive">
+
+              <div class="fw-bold">
+                No Pre-Game Options Exist Yet...
+              </div>
+
+            </div>
+
+            <!-- in-game options -->
+            <div x-show="gameLoopIsActive">
+
+              <button class="d-block mx-auto btn btn-danger menu-button">
+                Exit the Game
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <section class="page-content d-flex flex-column flex-center">
 
+      <!-- header -->
       <div class="w-100 my-2 d-flex">
+
         <!-- title -->
         <h1 class="ms-2 flex-grow-1 cursor-default user-select-none">
           Math Whiz
@@ -55,7 +99,9 @@
 
         <!-- menu icon -->
         <div class="cursor-pointer"
-             title="Options menu">
+             title="Options menu"
+             data-bs-toggle="modal"
+             data-bs-target="#menu-modal">
           <span class="p-2">
             <svg xmlns="http://www.w3.org/2000/svg"
                  width="32"
@@ -69,29 +115,41 @@
                        0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5
                        0 0 1-.5-.5z"/>
             </svg>
-          </div>
-
+          </span>
         </div>
+
+
       </div>
 
-      <!-- main menu -->
-      <div x-show="!gameLoopIsActive"
-           x-transition.opacity
-           class="flex-grow-1 d-flex flex-center">
+      <!-- intro screen -->
+      <div class="flex-grow-1 d-flex flex-center">
 
-        <div class="d-flex flex-center">
-          <button class="btn btn-primary"
+        <div class="mx-auto"
+             x-show="!gameLoopIsActive"
+             x-transition.opacity>
+
+          <button class="d-block mx-auto btn btn-primary menu-button"
                   @click="gameStart()">
             Start New Game
           </button>
+
+          <button class="d-block mt-2 mx-auto btn btn-secondary menu-button"
+                  @click="modalMenuMain.show()">
+            Settings
+          </button>
+
         </div>
         
       </div>
 
       <!-- status bar -->
-      <div class="d-flex">
-        <div>Debug:&nbsp;</div>
-        <div x-text="gameLoopIsActive"></div>
+      <div class="text-center">
+        <span>gameLoopIsActive:&nbsp;</span>
+        <span
+           class="text-primary cursor-pointer"
+           x-text="gameLoopIsActive"
+           @click="gameLoopIsActive = !gameLoopIsActive">
+        </span>
       </div>
 
     </section>
