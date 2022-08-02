@@ -1,6 +1,24 @@
+[x-cloak] {
+  display: none !important;
+}
+
 /* components */
-.menu-button {
+.button-menu {
   width: 15rem;
+}
+
+.button-number {
+  width: 4rem;
+  padding: 1rem;
+  border: 2px solid black;
+}
+
+.button-number-top {
+  width: 6rem;
+}
+
+.number-input {
+  border-bottom: 3px solid black;
 }
 
 .page-content {
