@@ -1,0 +1,22 @@
+{
+  "name": "math-whiz",
+  "version": "1.0.0",
+  "description": "A game designed to help improve your arithmetic skills.",
+  "main": "live.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arcanemachine/math-whiz.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/arcanemachine/math-whiz/issues"
+  },
+  "homepage": "https://github.com/arcanemachine/math-whiz",
+  "dependencies": {
+    "eslint": "^8.21.0"
+  }
+}
