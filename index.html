@@ -37,14 +37,16 @@
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js">
     </script>
 
-    <!-- live.js -->
+    <!-- live.js
     <script defer
       src="https://cdn.jsdelivr.net/gh/Q42/LiveJS@master/livejs.js"
     ></script>
+     -->
 
   </head>
-  <body x-data="aMathWhizComponent()">
-    
+  <body x-data="aMathWhizComponent()"
+        @keydown.window="(e) => eventKeydownHandle(e)">
+
     <!-- modal - main menu -->
     <div class="modal fade"
          id="menu-modal"
@@ -114,11 +116,12 @@
                 Are you sure you want to exit the game?
               </div>
               <div class="mt-4">
-                <button class="d-block btn btn-danger button-menu"
-                        @click="gameExit()">
+                <button class="d-block mx-auto btn btn-danger button-menu"
+                        @click="gameStop()">
                   Exit
                 </button>
-                <button class="mt-2 d-block btn btn-secondary button-menu"
+                <button class="mt-2 d-block mx-auto btn btn-secondary
+                               button-menu"
                         @click="modalMenuGameExitConfirm.hide()">
                   Cancel
                 </button>
@@ -176,7 +179,7 @@
                  xmlns="http://www.w3.org/2000/svg"
                  width="32"
                  height="32"
-                 fill="currentColor" 
+                 fill="currentColor"
                  class="bi bi-x"
                  viewBox="0 0 16 16">
               <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8
@@ -214,73 +217,88 @@
         <div class="position-absolute mx-auto"
              x-show="gameLoopIsActive"
              x-transition.opacity.duration.250ms>
-          <div class="d-flex flex-column flex-center">
+          <div class="w-100 d-flex flex-column flex-center">
             <div class="w-100 mb-5 fs-3 text-center">
               <span x-text="questionNumberFirst"></span>
               <span x-text="questionOperator"></span>
               <span x-text="questionNumberSecond"></span>
               = ?
             </div>
-            <div class="w-100 mb-4 number-input text-center">
+            <div class="w-100 mb-4 number-input text-center"
+                 @scroll="(e) => { e.preventDefault(); }">
               <input class="py-2 border-0 text-center"
-                     type="number"
-                     x-model="numberInputValue">
+                     type="text"
+                     x-model="answerFieldValue">
             </div>
             <div>
-              <button class="btn btn-light button-number button-number-top">
+              <button class="btn btn-light button-number button-number-top"
+                      @click="answerFieldClear()">
                 Clear
               </button>
-              <button class="btn btn-light button-number button-number-top">
+              <button class="btn btn-light button-number button-number-top"
+                      @click="answerFieldBackspace()">
                 Delete
               </button>
             </div>
             <div class="mt-2">
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('1')">
                 1
               </button>
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('2')">
                 2
               </button>
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('3')">
                 3
               </button>
             </div>
             <div class="mt-1">
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('4')">
                 4
               </button>
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('5')">
                 5
               </button>
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('6')">
                 6
               </button>
             </div>
             <div class="mt-1">
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('7')">
                 7
               </button>
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('8')">
                 8
               </button>
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('9')">
                 9
               </button>
             </div>
             <div class="mt-1">
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('.')">
                 .
               </button>
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerFieldAppend('0')">
                 0
               </button>
-              <button class="btn btn-light button-number">
+              <button class="btn btn-light button-number"
+                      @click="answerSubmit()">
                 OK
               </button>
             </div>
           </div>
         </div>
-        
+
       </div>
 
       <!-- status bar -->

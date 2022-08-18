@@ -2,3 +2,5 @@
 *.bak
 *.del
 Session.vim
+
+node_modules/
